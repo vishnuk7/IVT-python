@@ -2,6 +2,7 @@
 
 import numpy
 import pandas as pd
+import csv
 
 def remove_missing(x, y, time, missing):
 	mx = numpy.array(x==missing, dtype=int)
@@ -90,3 +91,8 @@ time=df.ts
 sfix,efix = fixation_detection(x, y, time)
 
 print(efix)
+
+with open('extractedFixations.csv', 'w') as file:
+    write = csv.writer(file)
+    write.writerows(efix)
+
